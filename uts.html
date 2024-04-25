@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran THR</title>
+</head>
+<body>
+
+<h2>Pembayaran THR</h2>
+
+<label for="gajiPokok">Gaji Pokok:</label>
+<input type="number" id="gajiPokok" required>
+<br><br>
+
+<label for="tunjanganTetap">Tunjangan Tetap:</label>
+<input type="number" id="tunjanganTetap" required>
+<br><br>
+
+<label for="masaKerja">Masa Kerja (bulan):</label>
+<input type="number" id="masaKerja" required>
+<br><br>
+
+<button onclick="hitungTHR()">Hitung THR</button>
+
+<div id="output"></div>
+
+<script>
+function hitungTHR() {
+    var gajiPokok = parseFloat(document.getElementById("gajiPokok").value);
+    var tunjanganTetap = parseFloat(document.getElementById("tunjanganTetap").value);
+    var masaKerja = parseFloat(document.getElementById("masaKerja").value);
+
+    var thr = 0;
+
+    if (masaKerja < 1) {
+        thr = 0;
+    } else if (masaKerja >= 1 && masaKerja < 6) {
+        thr = gajiPokok + tunjanganTetap;
+    } else if (masaKerja >= 7 && masaKerja < 12) {
+        thr = gajiPokok * 1.5 + tunjanganTetap;
+    } else if (masaKerja >= 12) {
+        thr = gajiPokok * 2 + tunjanganTetap;
+    }
+
+    var outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "<p>THR yang akan diterima adalah:  " + thr.toFixed(2) + "</p>";
+}
+</script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran Gaji dan THR</title>
+</head>
+<body>
+
+<h2>Pembayaran Gaji dan THR</h2>
+
+<label for="gajiPokok">Gaji Pokok:</label>
+<input type="number" id="gajiPokok" required>
+<br><br>
+
+<label for="tunjanganTetap">Tunjangan Tetap:</label>
+<input type="number" id="tunjanganTetap" required>
+<br><br>
+
+<label for="masaKerja">Masa Kerja (bulan):</label>
+<input type="number" id="masaKerja" required>
+<br><br>
+
+<button onclick="hitungTotal()">Hitung Total Gaji dan THR</button>
+
+<div id="output"></div>
+
+<script>
+function hitungTotal() {
+    var gajiPokok = parseFloat(document.getElementById("gajiPokok").value);
+    var tunjanganTetap = parseFloat(document.getElementById("tunjanganTetap").value);
+    var masaKerja = parseFloat(document.getElementById("masaKerja").value);
+
+    var totalGaji = gajiPokok + tunjanganTetap;
+    var thr = 0;
+
+    if (masaKerja >= 12) {
+        thr = totalGaji;
+    } else if (masaKerja > 0) {
+        thr = (masaKerja / 12) * totalGaji;
+    }
+
+    var outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "<p>Total Gaji: " + totalGaji.toFixed(2) + "</p>";
+    outputDiv.innerHTML += "<p>THR: " + thr.toFixed(2) + "</p>";
+}
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran THR dan PPH</title>
+</head>
+<body>
+<h2> Pembayaran THR dan PPH</h2>
+
+<label for="gajiPokok">Gaji Pokok:</label>
+<input type="number" id="gajiPokok" required>
+<br><br>
+
+<label for="tunjanganTetap">Tunjangan Tetap:</label>
+<input type="number" id="tunjanganTetap" required>
+<br><br>
+
+<button onclick="hitungPembayaran()">Hitung Pembayaran</button>
+
+<div id="output"></div>
+
+<script>
+function hitungPembayaran() {
+    var gajiPokok = parseFloat(document.getElementById("gajiPokok").value);
+    var tunjanganTetap = parseFloat(document.getElementById("tunjanganTetap").value);
+    
+    var totalGaji = gajiPokok + tunjanganTetap;
+    var thr = totalGaji;
+    var pph = 0;
+    var totalPembayaran = 0;
+
+    var ptkp = 4500000; 
+
+    if (totalGaji > ptkp) {
+        pph = 0.05 * (totalGaji - ptkp); 
+    }
+
+    totalPembayaran = thr + pph;
+
+    var outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = "<p>THR: " + thr.toFixed(2) + "</p>";
+    outputDiv.innerHTML += "<p>PPH: " + pph.toFixed(2) + "</p>";
+    outputDiv.innerHTML += "<p>Total Pembayaran: " + totalPembayaran.toFixed(2) + "</p>";
+}
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Look Into Yourself</h1>
+    <p>
+        <b><u> Look Into Yourself </u></b>
+        <br> Release your heart free <br>
+        Look into yourself,
+        and be the master of your destiny
+    </p>
+</body>
+</html>
